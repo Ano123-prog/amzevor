@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMZEVOR - Connect. Grow. Do Business.</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:#f1f5f9;color:#0f172a}
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e2e8f0;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:22px;color:#2563eb}.badge{background:#dcfce7;color:#166534;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.hero{background:#2563eb;color:#fff;padding:28px 16px;text-align:center}.hero h1{margin:8px 0;font-size:30px}
+.card{background:#fff;margin:12px;border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+input,select,textarea{width:100%;padding:12px;border:1px solid #e2e8f0;border-radius:12px;margin:6px 0}
+.post-btn{background:#2563eb;color:#fff;border:0;padding:12px;border-radius:999px;font-weight:800;width:100%}
+.like{border:1px solid #e2e8f0;background:#fff;padding:8px 14px;border-radius:999px}
+footer{text-align:center;padding:20px;color:#64748b;font-size:13px}
+</style></head>
+<body>
+<header><div class="logo">AMZEVOR</div><div class="badge" id="status">Connecting...</div></header>
+<div class="hero"><h1>Connect. Grow.<br>Do Business.</h1><p>Real AMZEVOR - posts save to Firebase for everyone.</p></div>
+<div class="card"><h3>Create a Post</h3>
+<input id="name" placeholder="Your name" value="Guest">
+<select id="cat"><option>General</option><option>Fashion</option><option>Food</option><option>Technology</option><option>Beauty</option></select>
+<textarea id="text" rows="3" placeholder="Share a business update..."></textarea>
+<button class="post-btn" id="postBtn">Post to AMZEVOR</button>
+<button id="seedBtn" style="margin-top:8px;width:100%;padding:10px;border-radius:999px;border:1px dashed #cbd5e1;background:#fff">Seed Demo Posts</button>
+<div id="msg"></div></div>
+<div class="card"><h3>Community Feed</h3><div id="feed">Loading...</div></div>
+<footer>AMZEVOR - Connect. Grow. Do Business.<br>Powered by Firebase Firestore</footer>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getFirestore,collection,addDoc,onSnapshot,query,orderBy,updateDoc,doc,increment,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getAuth,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const firebaseConfig={apiKey:"AIzaSyDtqcwLy9YMAUC4zNF6DhZgWN-PeX209bk",authDomain:"amzevor.firebaseapp.com",projectId:"amzevor",storageBucket:"amzevor.firebasestorage.app",messagingSenderId:"764480311714",appId:"1:764480311714:web:a6a9c38535bca9a1b322fb"};
+let db,allPosts=[];
+const feed=document.getElementById('feed');
+function render(){feed.innerHTML=allPosts.length?allPosts.map(p=>`<div style="border-top:1px solid #eee;padding:12px 0"><b>${p.author}</b> - ${p.category}<p>${p.text}</p><button class="like" onclick="window.likePost('${p.id}')">Like • ${p.likesCount||0}</button></div>`).join(''):'<p>No posts yet. Tap Seed Demo Posts!</p>'}
+window.likePost=async(id)=>{let l=JSON.parse(localStorage.getItem('amz_liked')||'[]');if(l.includes(id)){alert('Already liked');return}l.push(id);localStorage.setItem('amz_liked',JSON.stringify(l));await updateDoc(doc(db,'posts',id),{likesCount:increment(1)})}
+try{const app=initializeApp(firebaseConfig);db=getFirestore(app);await signInAnonymously(getAuth(app)).catch(()=>{});document.getElementById('status').textContent='● LIVE • Firebase';onSnapshot(query(collection(db,'posts'),orderBy('createdAt','desc')),(s)=>{allPosts=s.docs.map(d=>({id:d.id,...d.data()}));render()},{error:()=>{feed.innerHTML='Firestore not enabled yet. Go to Firebase Console > Build > Firestore Database > Create database > Start in test mode'}})}catch(e){feed.innerHTML='Error: '+e.message}
+document.getElementById('postBtn').onclick=async()=>{const t=document.getElementById('text').value.trim();if(!t)return;await addDoc(collection(db,'posts'),{author:document.getElementById('name').value||'Guest',text:t,category:document.getElementById('cat').value,likesCount:0,createdAt:serverTimestamp()});document.getElementById('text').value='';document.getElementById('msg').textContent='Posted!'};
+document.getElementById('seedBtn').onclick=async()=>{for(const d of [{author:'AMZEVOR Community',category:'General',text:'Welcome to AMZEVOR! Connect. Grow. Do Business.'},{author:'Northline Styles',category:'Fashion',text:'New collection just dropped in Lagos!'},{author:'FreshBite Kitchen',category:'Food',text:'Fresh meals daily in Lagos!'}]){await addDoc(collection(db,'posts'),{...d,likesCount:0,createdAt:serverTimestamp()})}};
+</script></body></html>
