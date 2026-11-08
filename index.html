@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101a2b">
+<title>AMZEVOR — Connect. Grow. Do Business.</title>
+<style>
+:root{--navy:#101a2b;--navy2:#17263d;--blue:#2878f0;--cyan:#42c6d9;--gold:#f3bd55;--ink:#172033;--muted:#68758a;--line:#e7ebf1;--bg:#f4f7fb;--white:#fff;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--ink)}button,input,textarea{font:inherit}button{cursor:pointer}
+.topbar{height:66px;background:var(--navy);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 1180px)/2));position:sticky;top:0;z-index:5;box-shadow:0 3px 15px #101a2b22}
+.brand{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;font-weight:850;letter-spacing:1.4px;font-size:21px}.brandmark{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;font-weight:900;color:white;box-shadow:0 4px 12px #2878f055}
+.topnav{display:flex;gap:20px;align-items:center}.topnav a{color:#d8e4f5;text-decoration:none;font-size:13px}.topnav a:hover{color:white}.topbtn{background:var(--gold);border:0;color:#1b2434;padding:10px 16px;border-radius:9px;font-weight:750}
+.wrap{max-width:1180px;margin:auto;padding:26px 18px 60px}.hero{background:linear-gradient(115deg,#101a2b 0%,#1c3657 62%,#176b83 100%);color:white;border-radius:22px;padding:42px 42px 38px;display:grid;grid-template-columns:1.35fr .85fr;gap:24px;overflow:hidden;position:relative}.eyebrow{color:#8ce4ed;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.04;margin:13px 0 15px;max-width:650px}.hero p{color:#d4e0ef;line-height:1.7;max-width:610px;margin:0 0 22px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.primary{background:var(--gold);color:#1d2737;border:0;border-radius:10px;padding:12px 18px;font-weight:800}.secondary{background:#ffffff12;border:1px solid #ffffff55;color:white;border-radius:10px;padding:12px 18px;font-weight:700}.hero-card{align-self:center;background:#ffffff12;border:1px solid #ffffff25;border-radius:18px;padding:23px;backdrop-filter:blur(6px)}.hero-card .big{font-size:29px;font-weight:850;color:var(--gold);margin-bottom:8px}.hero-card p{font-size:13px;margin:0}.hero-points{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:#e1ebf7;font-size:12px}.hero-points span:before{content:"✓";color:var(--cyan);font-weight:900;margin-right:7px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 14px}.section-head h2{font-size:21px;margin:0}.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.textlink{color:var(--blue);font-weight:700;font-size:13px;text-decoration:none}
+.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,.8fr);gap:22px;align-items:start}.card{background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 16px #1a2b4208}.feedcol{min-width:0}.composer{padding:17px;margin-bottom:14px}.composer-top{display:flex;gap:11px;align-items:center}.avatar{width:42px;height:42px;border-radius:13px;background:#e8f3ff;color:#2365c7;display:grid;place-items:center;font-weight:850;flex:none}.composer input{border:1px solid var(--line);background:#f8fafc;border-radius:11px;padding:13px 14px;width:100%;outline:none}.composer input:focus,.search:focus,textarea:focus{border-color:var(--blue)}.composer-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:12px}.hint{font-size:11px;color:var(--muted)}.smallbtn{background:var(--blue);color:white;border:0;border-radius:9px;padding:9px 16px;font-weight:750}.post{padding:18px;margin-bottom:13px}.posthead{display:flex;gap:10px;align-items:center}.postname{font-size:14px;font-weight:800}.postmeta{font-size:11px;color:var(--muted);margin-top:3px}.badge{font-size:10px;background:#eaf3ff;color:#2467c5;padding:4px 7px;border-radius:20px;margin-left:5px}.postbody{font-size:13px;line-height:1.7;margin:15px 0;color:#344056;white-space:pre-wrap}.post-actions{border-top:1px solid var(--line);padding-top:11px;display:flex;gap:20px}.action{border:0;background:none;color:#69768a;font-size:12px;padding:3px}.action.liked{color:#d34e67;font-weight:800}.side{display:grid;gap:14px}.sidecard{padding:18px}.sidecard h3{font-size:15px;margin:0 0 13px}.founder{background:linear-gradient(145deg,#fff,#f1f7ff)}.founder .quote{font-size:13px;line-height:1.7;color:#42516a}.founder strong{font-size:12px}.founder .role{font-size:11px;color:var(--muted);margin-top:4px}.business{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.business:first-of-type{border-top:0}.bizicon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:850;color:#205bb4;background:#eaf3ff}.bizname{font-size:12px;font-weight:800}.bizcat{font-size:10px;color:var(--muted);margin-top:3px}.discover{padding:16px}.search{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;outline:none;margin:4px 0 12px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid var(--line);background:white;border-radius:30px;padding:7px 10px;font-size:11px;color:#536176}.chip.active{background:#eaf3ff;border-color:#bcd7ff;color:#1d61c3}.footer{text-align:center;color:#8490a2;font-size:11px;padding:25px 10px}.modal{position:fixed;inset:0;background:#07132399;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.modalbox{background:white;border-radius:16px;padding:22px;width:min(480px,100%);box-shadow:0 15px 50px #0003}.modalbox h3{margin:0 0 14px}.modalbox input,.modalbox textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:6px 0 10px;outline:none}.modalbox textarea{min-height:110px;resize:vertical}.modalactions{display:flex;justify-content:flex-end;gap:9px;margin-top:8px}.cancel{background:#eef1f5;border:0;border-radius:9px;padding:10px 14px}.empty{font-size:13px;color:var(--muted);padding:20px;text-align:center}
+@media(max-width:780px){.topnav a{display:none}.hero{grid-template-columns:1fr;padding:29px 23px}.hero-card{max-width:420px}.grid{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.wrap{padding-top:16px}}
+@media(max-width:520px){.side{grid-template-columns:1fr}.hero h1{font-size:36px}.hero{border-radius:16px}.topbar{height:60px}.topbtn{padding:9px 11px;font-size:12px}.brand{font-size:18px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brandmark">A</span> AMZEVOR</a>
+  <nav class="topnav"><a href="#feed">Community</a><a href="#businesses">Businesses</a><a href="#founder">Our vision</a></nav>
+  <button class="topbtn" onclick="openPost()">＋ Create post</button>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">A new space for business connections</div>
+      <h1>Connect. Grow.<br>Do business.</h1>
+      <p>AMZEVOR is being built to bring people, entrepreneurs and businesses together. Share what you do, discover useful services and create opportunities that can reach beyond your location.</p>
+      <div class="hero-actions"><button class="primary" onclick="document.getElementById('feed').scrollIntoView({behavior:'smooth'})">Explore the community</button><button class="secondary" onclick="document.getElementById('businesses').scrollIntoView({behavior:'smooth'})">Discover businesses</button></div>
+      <div class="hero-points"><span>People & businesses</span><span>Ideas & opportunities</span><span>One connected community</span></div>
+    </div>
+    <div class="hero-card"><div class="big">Your next connection starts here.</div><p>Follow business updates, meet people with shared interests and help good businesses get noticed.</p></div>
+  </section>
+
+  <div class="section-head" id="feed"><div><h2>Community feed</h2><p>Ideas, updates and business conversations.</p></div><a class="textlink" href="#feed" onclick="showAll(event)">Latest posts</a></div>
+  <div class="grid">
+    <section class="feedcol">
+      <div class="card composer"><div class="composer-top"><div class="avatar">Y</div><input id="quickPost" placeholder="Share an idea or business update..." onclick="openPost()" readonly></div><div class="composer-bottom"><span class="hint">A simple place to start a conversation.</span><button class="smallbtn" onclick="openPost()">Create post</button></div></div>
+      <div id="posts"></div>
+    </section>
+    <aside class="side">
+      <section class="card sidecard founder" id="founder"><h3>A message from our founder</h3><p class="quote">“I started AMZEVOR with a simple belief: every business deserves a chance to be seen, make useful connections and find new opportunities. Our aim is to build a welcoming space where people and businesses can connect, share and grow together. We are starting small, listening to our community and building step by step.”</p><strong>Founder &amp; CEO</strong><div class="role">AMZEVOR</div></section>
+      <section class="card sidecard" id="businesses"><h3>Businesses to discover</h3><div id="bizlist"></div><a class="textlink" href="#discover">Find a business →</a></section>
+      <section class="card discover" id="discover"><h3>Discover by category</h3><input class="search" id="bizSearch" placeholder="Search businesses..." oninput="renderBusinesses()"><div class="chips"><button class="chip active" onclick="filterCat('All',this)">All</button><button class="chip" onclick="filterCat('Fashion',this)">Fashion</button><button class="chip" onclick="filterCat('Food',this)">Food</button><button class="chip" onclick="filterCat('Technology',this)">Technology</button><button class="chip" onclick="filterCat('Beauty',this)">Beauty</button></div><div id="searchResults"></div></section>
+    </aside>
+  </div>
+  <div class="footer">AMZEVOR · A community for connection, discovery and growth.<br>Early preview — sample businesses and posts are for demonstration.</div>
+</main>
+<div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modalbox"><h3 id="modalTitle">Share with the community</h3><input id="authorInput" placeholder="Your name or business name"><textarea id="postInput" placeholder="What would you like to share?"></textarea><div class="modalactions"><button class="cancel" onclick="closePost()">Cancel</button><button class="smallbtn" onclick="publishPost()">Publish post</button></div></div>
+</div>
+<script>
+const businesses=[
+ {name:"Northline Styles",cat:"Fashion",desc:"Ready-to-wear and everyday fashion",icon:"N"},
+ {name:"FreshBite Kitchen",cat:"Food",desc:"Small chops, meals and catering",icon:"F"},
+ {name:"BrightPath Digital",cat:"Technology",desc:"Websites and digital support",icon:"B"},
+ {name:"GlowNest Beauty",cat:"Beauty",desc:"Beauty products and self-care",icon:"G"}
+];
+let category="All";
+let posts=[
+ {name:"AMZEVOR Community",type:"Platform update",time:"Sample post",text:"Welcome to the AMZEVOR preview. This is a space where people and businesses can introduce what they do, share helpful updates and discover new connections.",likes:4,liked:false},
+ {name:"Northline Styles",type:"Fashion business",time:"Sample post",text:"We are excited to meet new customers and connect with other fashion businesses. What kind of everyday outfit do you enjoy wearing most?",likes:7,liked:false},
+ {name:"BrightPath Digital",type:"Technology business",time:"Sample post",text:"A clear online presence can help customers understand what your business offers. Start with the basics: what you do, who you help and how people can reach you.",likes:3,liked:false}
+];
+function initials(s){return s.trim().split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase()}
+function renderPosts(){
+ const box=document.getElementById("posts");
+ box.innerHTML=posts.map((p,i)=>`<article class="card post"><div class="posthead"><div class="avatar">${initials(p.name)}</div><div><div class="postname">${escapeHtml(p.name)} <span class="badge">${escapeHtml(p.type)}</span></div><div class="postmeta">${escapeHtml(p.time)}</div></div></div><div class="postbody">${escapeHtml(p.text)}</div><div class="post-actions"><button class="action ${p.liked?'liked':''}" onclick="toggleLike(${i})">♥ ${p.likes} Like</button><button class="action" onclick="sharePost(${i})">↗ Share</button></div></article>`).join("");
+}
+function renderBusinesses(){
+ const q=(document.getElementById("bizSearch")?.value||"").toLowerCase();
+ const filtered=businesses.filter(b=>(category==="All"||b.cat===category)&&(b.name+" "+b.cat+" "+b.desc).toLowerCase().includes(q));
+ const html=filtered.length?filtered.map(b=>`<div class="business"><div class="bizicon">${b.icon}</div><div><div class="bizname">${escapeHtml(b.name)}</div><div class="bizcat">${escapeHtml(b.cat)} · ${escapeHtml(b.desc)}</div></div></div>`).join(""):'<div class="empty">No matching sample businesses.</div>';
+ document.getElementById("bizlist").innerHTML=businesses.slice(0,3).map(b=>`<div class="business"><div class="bizicon">${b.icon}</div><div><div class="bizname">${escapeHtml(b.name)}</div><div class="bizcat">${escapeHtml(b.cat)}</div></div></div>`).join("");
+ document.getElementById("searchResults").innerHTML=html;
+}
+function filterCat(cat,btn){category=cat;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));btn.classList.add("active");renderBusinesses()}
+function toggleLike(i){posts[i].liked=!posts[i].liked;posts[i].likes+=posts[i].liked?1:-1;renderPosts()}
+function sharePost(i){const p=posts[i];const txt=p.name+": "+p.text;if(navigator.share){navigator.share({title:"AMZEVOR community post",text:txt}).catch(()=>{})}else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(()=>alert("Post text copied."))}else{alert(txt)}}
+function openPost(){document.getElementById("postModal").classList.add("open");document.getElementById("authorInput").focus()}
+function closePost(){document.getElementById("postModal").classList.remove("open")}
+function publishPost(){const name=document.getElementById("authorInput").value.trim()||"Community member";const text=document.getElementById("postInput").value.trim();if(!text){alert("Please write something before publishing.");return}posts.unshift({name,type:"Community member",time:"Just now · Preview only",text,likes:0,liked:false});renderPosts();document.getElementById("authorInput").value="";document.getElementById("postInput").value="";closePost();document.getElementById("feed").scrollIntoView({behavior:"smooth"})}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function showAll(e){e.preventDefault();renderPosts()}
+renderPosts();renderBusinesses();
+</script>
+</body>
+</html>
